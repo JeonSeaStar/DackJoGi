@@ -80,6 +80,7 @@ public class SelectUI : MonoBehaviour
         List<Guide> guide = guideList[selectedMachine].parts[selectedParts].guide;
         guideTextBox.guideTitle.text = guide[currentGuide].guideTitle;
         StartCoroutine(OutputText(guide[currentGuide].guideText));
+        SetGuideIndex();
     }
 
     void StartGuide()

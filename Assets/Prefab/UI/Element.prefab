@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select
+  m_text: "\uC120\uD0DD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a403ea30ab7902428f7bbffca89b63a, type: 2}
   m_sharedMaterial: {fileID: -8531167451328603295, guid: 9a403ea30ab7902428f7bbffca89b63a,
