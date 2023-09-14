@@ -21,25 +21,29 @@ public class FilterInnerProcess : MonoBehaviour
 
     public bool AirCheckClearBool = false;
 
+    bool once;
+
     public void Update()
     {
-        AirClearCheck();
+        if (!AirCheckClearBool)
+            AirClearCheck();
     }
 
     public void AirClearCheck()
     {
-        if(ap1.airPointCheck01 && ap2.airPointCheck02 && ap3.airPointCheck03 && ap4.airPointCheck04 && ap5.airPointCheck05
-            && ap6.airPointCheck06 && ap7.airPointCheck07 && ap8.airPointCheck08 && ap9.airPointCheck09 && ap10.airPointCheck10 
+        if (ap1.airPointCheck01 && ap2.airPointCheck02 && ap3.airPointCheck03 && ap4.airPointCheck04 && ap5.airPointCheck05
+            && ap6.airPointCheck06 && ap7.airPointCheck07 && ap8.airPointCheck08 && ap9.airPointCheck09 && ap10.airPointCheck10
             && ap11.airPointCheck11 && ap12.airPointCheck12)
         {
             AirCheckClearBool = true;
             tableCol.gameObject.SetActive(true);
+            SelectUI.instance.NextHighLight();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("table"))
+        if (other.gameObject.CompareTag("table"))
         {
             Destroy(this);
         }

@@ -13,6 +13,7 @@ public class FilterInnerChecker : MonoBehaviour
         if (other.gameObject.CompareTag("FilterInner"))
         {
             filterInnerCheck = true;
+            SelectUI.instance.NextHighLight();
             innerFilter.gameObject.SetActive(false);
             innerfilterOut.gameObject.SetActive(false);
         }

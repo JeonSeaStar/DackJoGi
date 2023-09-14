@@ -12,22 +12,23 @@ public class FilterUpperProcess : MonoBehaviour
     public bool washClear = false;
 
     public GameObject tableCol;
-
+    bool once;
 
     public void Update()
     {
-        CheckAllClear();
-        
+        if (!washClear)
+            CheckAllClear();
     }
 
     public void CheckAllClear()
     {
-        if(wP1.washP1 && wP2.washP2 && wP3.washP3 && wP4.washP4)
+        if (wP1.washP1 && wP2.washP2 && wP3.washP3 && wP4.washP4)
         {
             washClear = true;
             tableCol.gameObject.SetActive(true);
+            SelectUI.instance.NextHighLight();
         }
     }
 
-    
+
 }

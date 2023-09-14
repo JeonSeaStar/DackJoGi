@@ -16,6 +16,13 @@ public class ProcessFour : MonoBehaviour
 
     public bool buckleChecker = false;
 
+    public SelectUI selectUI;
+
+    public void Awake()
+    {
+        selectUI.NextGuide();
+    }
+
     public void Update()
     {
         Check();
@@ -35,6 +42,7 @@ public class ProcessFour : MonoBehaviour
     {
         if(afterBuckle1.lock1 && afterBuckle2.lock2 && afterBuckle3.lock3 && afterBuckle4.lock4)
         {
+            SelectUI.instance.NextHighLight();
             buckleChecker = true;
         }
     }

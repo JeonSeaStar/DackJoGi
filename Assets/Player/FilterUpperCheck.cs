@@ -12,6 +12,7 @@ public class FilterUpperCheck : MonoBehaviour
         if (other.gameObject.CompareTag("FilterUpper"))
         {
             filterUpperCheck = true;
+            SelectUI.instance.NextHighLight();
             upper.gameObject.SetActive(false);
         }
     }

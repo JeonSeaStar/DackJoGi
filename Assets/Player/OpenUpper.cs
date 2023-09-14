@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InnerDes : MonoBehaviour
+public class OpenUpper : MonoBehaviour
 {
     public GameObject checker;
 
-    private void Update()
+    private void OnTriggerExit(Collider other)
     {
-        if(checker.gameObject.activeSelf == true)
+        if(other.gameObject == checker)
         {
             SelectUI.instance.NextHighLight();
-            gameObject.SetActive(false);
+            checker.SetActive(false);
         }
     }
 }

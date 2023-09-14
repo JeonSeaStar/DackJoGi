@@ -18,6 +18,7 @@ public class TableUpperChecker : MonoBehaviour
                 filterUpper.gameObject.SetActive(false);
                 filterUpperTable.gameObject.SetActive(true);
                 UpperCheck = true;
+                SelectUI.instance.NextHighLight();
             }
         }
     }

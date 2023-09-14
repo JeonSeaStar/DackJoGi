@@ -5,6 +5,12 @@ using UnityEngine;
 public class ProcessTwo : MonoBehaviour
 {
     public Rigidbody rig;
+    public SelectUI selectUI;
+
+    public void Awake()
+    {
+        selectUI.NextGuide();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

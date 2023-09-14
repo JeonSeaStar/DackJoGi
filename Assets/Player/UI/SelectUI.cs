@@ -6,6 +6,9 @@ using TMPro;
 
 public class SelectUI : MonoBehaviour
 {
+    public static SelectUI instance;
+    void Awake() => instance = this;
+
     [SerializeField] ScrollRect scrollRect;
 
     [SerializeField] List<GameObject> contentList;
@@ -17,8 +20,6 @@ public class SelectUI : MonoBehaviour
 
     [SerializeField] GameObject elementPrefab;
     [SerializeField] List<Element> listElements = new List<Element>();
-
-    [SerializeField] RectTransform highLight;
 
     [SerializeField] List<MachineGuide> guideList;
     public int advancedGuide;
@@ -33,20 +34,11 @@ public class SelectUI : MonoBehaviour
     public Vector3 menuPosition;
 
     public Material highlightMatiral;
-    public Material backupMatiral;
-    public MeshRenderer test;
+    public List<Material> backupMatiral;
+    public int currentStep;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-            OnHighlight(test);
-        if (Input.GetKeyDown(KeyCode.N))
-            OffHighlight(test);
-        if (Input.GetKeyDown(KeyCode.A))
-            NextGuide();
-        if (OVRInput.GetDown(OVRInput.Button.Two))
-            NextGuide();
-
         playerParent.position = player.position;
         menuCanvas.position = player.position + menuPosition;
     }
@@ -108,6 +100,7 @@ public class SelectUI : MonoBehaviour
         selectedParts = i;
         ChangeContent();
         StartGuide();
+        StartHighLight();
     }
 
     public void SelectGuide(int i)
@@ -125,31 +118,6 @@ public class SelectUI : MonoBehaviour
         guideTextBox.guideText.text = "";
         StopCoroutine("OutputText");
         StartCoroutine("OutputText", guide[currentGuide].guideText);
-
-        GuideHighLight(i);
-    }
-
-    void GuideHighLight(int i)
-    {
-        List<Guide> guide = guideList[selectedMachine].parts[selectedParts].guide;
-
-        foreach (Element highlight in listElements)
-            highlight.highlight.SetActive(false);
-
-        listElements[i].highlight.SetActive(true);
-
-        if(i != 0)
-        {
-            for(int j = 0; j < guide[i - 1].highlitTarget.Count; j++)
-            {
-                OffHighlight(guide[i - 1].highlitTarget[j]);
-            }
-        }
-
-        for (int j = 0; j < guide[i - 1].highlitTarget.Count; j++)
-        {
-            OnHighlight(guide[i].highlitTarget[j]);
-        }
     }
 
     void StartGuide()
@@ -158,10 +126,11 @@ public class SelectUI : MonoBehaviour
         advancedGuide = 0;
         currentGuide = 0;
         listElements[currentGuide].gameObject.SetActive(true);
+        guideList[selectedMachine].parts[selectedParts].processOne.SetActive(true);
         GuideTextBox(currentGuide);
     }
 
-    void NextGuide()
+    public void NextGuide()
     {
         advancedGuide++;
         currentGuide = advancedGuide;
@@ -213,17 +182,56 @@ public class SelectUI : MonoBehaviour
         listElements = new List<Element>();
     }
 
+    void StartHighLight()
+    {
+        currentStep = 0;
+        List<MeshRenderer> highlist = guideList[selectedMachine].parts[selectedParts].highlight[currentStep].highlistStep;
+
+        backupMatiral = new List<Material>();
+        foreach (var renderer in highlist)
+            OnHighlight(renderer);
+    }
+
+    public void NextHighLight()
+    {
+        currentStep++;
+        List<MeshRenderer> previousHighlist = guideList[selectedMachine].parts[selectedParts].highlight[currentStep - 1].highlistStep;
+        List<MeshRenderer> highlist = guideList[selectedMachine].parts[selectedParts].highlight[currentStep].highlistStep;
+
+        foreach (var renderer in previousHighlist)
+            OffHighlight(renderer);
+
+        backupMatiral = new List<Material>();
+        foreach (var renderer in highlist)
+            OnHighlight(renderer);
+    }
+
     void OnHighlight(MeshRenderer target)
     {
-        backupMatiral = target.material;
-        highlightMatiral.SetTexture("_Occlusion", target.material.mainTexture);
-        highlightMatiral.SetTexture("_Texture2D", target.material.mainTexture);
-        target.material = highlightMatiral;
+        Material[] mat = new Material[target.materials.Length];
+
+        for (int i = 0; i < target.materials.Length; i++)
+        {
+            backupMatiral.Add(new Material(target.materials[i]));
+            Material m = new Material(highlightMatiral);
+            m.SetTexture("_Occlusion", target.materials[i].mainTexture);
+            m.SetTexture("_Texture2D", target.materials[i].mainTexture);
+            m.SetColor("_BaseColor", target.materials[i].color);
+            mat[i] = m;
+        }
+
+        target.materials = mat;
     }
 
     void OffHighlight(MeshRenderer target)
     {
-        target.material = backupMatiral;
+        Material[] mat = new Material[target.materials.Length];
+
+        for (int i = 0; i < target.materials.Length; i++)
+        {
+            mat[i] = backupMatiral[i];
+        }
+        target.materials = mat;
     }
 }
 
@@ -240,6 +248,14 @@ class PartsList
     public string parts;
     public string explain;
     public List<Guide> guide;
+    public GameObject processOne;
+    public List<HighlightList> highlight;
+}
+
+[System.Serializable]
+class HighlightList
+{
+    public List<MeshRenderer> highlistStep;
 }
 
 [System.Serializable]
@@ -255,5 +271,4 @@ class Guide
 {
     [TextArea] public string guideTitle;
     [TextArea] public string guideText;
-    public List<MeshRenderer> highlitTarget;
 }
