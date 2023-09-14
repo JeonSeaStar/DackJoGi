@@ -28,9 +28,9 @@ public class SelectUI : MonoBehaviour
     int t = 0;
 
     public Transform player;
-    public Transform playerParent;
-    public Transform menuCanvas;
-    public Vector3 menuPosition;
+    public Transform playerParent; 
+    public Transform menuCanvas;  
+    public Vector3 menuPosition; 
 
     void Update()
     {

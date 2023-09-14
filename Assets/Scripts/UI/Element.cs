@@ -28,9 +28,9 @@ public class Element : MonoBehaviour
             else if (i == 1)
                 Size(25);
         }
-    }
-
-    void Size(int i)
+    }  
+      
+    void Size(int i) 
     {
         image.rectTransform.localPosition = new Vector2(image.rectTransform.localPosition.x, image.rectTransform.localPosition.y + i / 2);
         title.rectTransform.localPosition = new Vector2(title.rectTransform.localPosition.x, title.rectTransform.localPosition.y + i / 2);
