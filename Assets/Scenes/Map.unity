@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19147,6 +19147,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1402635932776874825, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 2091777986648393001, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 3562454381096148641, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 3714537954918389544, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 4165068584760712063, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 4501150883640646626, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 4803507078980268100, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 5443926165450994855, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
     - target: {fileID: 5764794363763483567, guid: 62a242ddb314441a999eb7a6e4280011,
         type: 3}
       propertyPath: m_RootOrder
@@ -19202,11 +19242,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5938060441849235924, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 6505153536726933659, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
     - target: {fileID: 6578485007864281365, guid: 62a242ddb314441a999eb7a6e4280011,
         type: 3}
       propertyPath: m_Name
       value: Excavator caterpillar 323d -
       objectReference: {fileID: 0}
+    - target: {fileID: 7192987914463594703, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
+    - target: {fileID: 8086381369464427630, guid: 62a242ddb314441a999eb7a6e4280011,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f93750b716900584bbf27aff9ee8b5d6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62a242ddb314441a999eb7a6e4280011, type: 3}
 --- !u!4 &6522299092158526464 stripped
