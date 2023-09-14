@@ -28,9 +28,9 @@ public class SelectUI : MonoBehaviour
     int t = 0;
 
     public Transform player;
-    public Transform playerParent;
-    public Transform menuCanvas;
-    public Vector3 menuPosition;
+    public Transform playerParent; 
+    public Transform menuCanvas;  
+    public Vector3 menuPosition; 
 
     void Update()
     {
@@ -44,7 +44,7 @@ public class SelectUI : MonoBehaviour
     }
 
     IEnumerator OutputText(string s)
-    {
+    { 
         guideTextBox.guideText.text += s[t];
         yield return new WaitForSeconds(delay);
         if (t < s.Length - 1)
