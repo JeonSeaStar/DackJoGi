@@ -25543,7 +25543,7 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
@@ -25553,7 +25553,7 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
@@ -25603,12 +25603,12 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 288.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
@@ -29322,6 +29322,12 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1042330709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 278480865524108247, guid: 38bec273df8999b4da2ffe5abbf08282,
+    type: 3}
+  m_PrefabInstance: {fileID: 1131888271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043106905
 GameObject:
   m_ObjectHideFlags: 0
@@ -31781,6 +31787,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 278480865524108247, guid: 38bec273df8999b4da2ffe5abbf08282,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278480865524108247, guid: 38bec273df8999b4da2ffe5abbf08282,
+        type: 3}
       propertyPath: m_TagString
       value: Air
       objectReference: {fileID: 0}
@@ -31839,6 +31850,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7869701501911880952, guid: 38bec273df8999b4da2ffe5abbf08282,
+        type: 3}
+      propertyPath: air
+      value: 
+      objectReference: {fileID: 1042330709}
     - target: {fileID: 7869701501911880954, guid: 38bec273df8999b4da2ffe5abbf08282,
         type: 3}
       propertyPath: m_UseGravity
