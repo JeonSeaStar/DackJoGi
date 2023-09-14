@@ -36,4 +36,13 @@ public class FilterInnerProcess : MonoBehaviour
             tableCol.gameObject.SetActive(true);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("table"))
+        {
+            Destroy(this);
+        }
+
+    }
 }

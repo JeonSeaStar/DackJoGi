@@ -23,6 +23,7 @@ public class ProcessThree : MonoBehaviour
 
     public void Update()
     {
+        CoverClearCheck();
         if(coverWashCheck == true)
         Check();
 

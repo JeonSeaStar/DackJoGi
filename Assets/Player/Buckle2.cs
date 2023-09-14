@@ -5,26 +5,29 @@ using UnityEngine;
 public class Buckle2 : MonoBehaviour
 {
     public bool unlock2 = false;
-    public bool hand = false;
+    public bool hand2 = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Hand"))
         {
-            hand = true;
+            hand2 = true;
         }
     }
 
     private void Update()
     {
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 1f)
+        if(hand2)
         {
-            unlock2 = true;
-        }
+            if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 1f)
+            {
+                unlock2 = true;
+            }
 
-        if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) >= 1f)
-        {
-            unlock2 = true;
+            if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) >= 1f)
+            {
+                unlock2 = true;
+            }
         }
     }
 }

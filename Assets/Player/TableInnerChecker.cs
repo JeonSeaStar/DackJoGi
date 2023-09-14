@@ -6,16 +6,20 @@ public class TableInnerChecker : MonoBehaviour
 {
     public GameObject filterInner;
     public GameObject filterInnerTable;
+    public FilterInnerProcess innerProcess;
 
     public bool InnerCheck = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FilterInner"))
+        if(innerProcess.AirCheckClearBool == true)
         {
-            filterInner.gameObject.SetActive(false);
-            filterInnerTable.gameObject.SetActive(true);
-            InnerCheck = true;
+            if (other.CompareTag("FilterInner"))
+            {
+                filterInner.gameObject.SetActive(false);
+                filterInnerTable.gameObject.SetActive(true);
+                InnerCheck = true;
+            }
         }
     }
 }

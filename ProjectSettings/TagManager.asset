@@ -11,6 +11,7 @@ TagManager:
   - Hand
   - HandTowal
   - Air
+  - table
   layers:
   - Default
   - TransparentFX
