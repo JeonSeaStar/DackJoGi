@@ -8,6 +8,9 @@ TagManager:
   - FilterInner
   - FilterCover
   - FilterUpper
+  - Hand
+  - HandTowal
+  - Air
   layers:
   - Default
   - TransparentFX

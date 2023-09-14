@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FilterInnerChecker : MonoBehaviour
 {
-    public AirFilterBefore airFilter;
+    public bool filterInnerCheck = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("FilterInner"))
         {
-            airFilter.filterInnerCheckBool = true;
+            filterInnerCheck = true;
         }
     }
 }
