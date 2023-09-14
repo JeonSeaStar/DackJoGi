@@ -5,10 +5,18 @@ using UnityEngine;
 public class Buckle1 : MonoBehaviour
 {
     public bool unlock1 = false;
-
+    public bool hand;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Hand"))
+        {
+            hand = true;
+        }
+    }
+
+    private void Update()
+    {
+        if(hand)
         {
             if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 1f)
             {
