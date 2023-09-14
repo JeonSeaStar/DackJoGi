@@ -1676,7 +1676,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: bf61a623856e9814f966df37a980236d, type: 2}
-  - {fileID: 2100000, guid: 27f93351dd728bb49a1ae2865982787f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3091,8 +3090,10 @@ MonoBehaviour:
       guide:
       - guideTitle: "\uC2A4\uD0ED 1"
         guideText: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC"
+        highlitTarget: []
       - guideTitle: "\uC2A4\uD0ED 2"
         guideText: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC"
+        highlitTarget: []
   advancedGuide: 0
   currentGuide: 0
   delay: 0.2
@@ -3101,6 +3102,7 @@ MonoBehaviour:
   menuCanvas: {fileID: 805377553}
   menuPosition: {x: -2.17, y: 0.6, z: 2.76}
   highlightMatiral: {fileID: 2100000, guid: 27f93351dd728bb49a1ae2865982787f, type: 2}
+  backupMatiral: {fileID: 0}
   test: {fileID: 501120236}
 --- !u!1 &998243298
 GameObject:
