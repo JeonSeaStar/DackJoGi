@@ -125,6 +125,7 @@ public class SelectUI : MonoBehaviour
         SetGuideIndex();
         advancedGuide = 0;
         currentGuide = 0;
+        OpenDoor.Instance.OpenDoorB();
         listElements[currentGuide].gameObject.SetActive(true);
         guideList[selectedMachine].parts[selectedParts].processOne.SetActive(true);
         GuideTextBox(currentGuide);
