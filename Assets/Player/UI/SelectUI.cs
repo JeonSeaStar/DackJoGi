@@ -44,7 +44,7 @@ public class SelectUI : MonoBehaviour
     }
 
     IEnumerator OutputText(string s)
-    {
+    { 
         guideTextBox.guideText.text += s[t];
         yield return new WaitForSeconds(delay);
         if (t < s.Length - 1)
