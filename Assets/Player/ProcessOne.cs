@@ -21,7 +21,7 @@ public class ProcessOne: MonoBehaviour
     {
         if(buckle1.unlock1 == true && buckle2.unlock2 == true && buckle3.unlock3 == true && Buckle4.unlock4 == true)
         {
-            Destroy(buckleCheckBefore);
+            buckleCheckBefore.gameObject.SetActive(false);
             buckleCheckAfter.gameObject.SetActive(true);
         }
     }
