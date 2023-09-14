@@ -30,10 +30,18 @@ public class SelectUI : MonoBehaviour
     public Transform player;
     public Transform playerParent; 
     public Transform menuCanvas;  
-    public Vector3 menuPosition; 
+    public Vector3 menuPosition;
+
+    public Material highlightMatiral;
+    public Material backupMatiral;
+    public MeshRenderer test;
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+            OnHighlight(test);
+        if (Input.GetKeyDown(KeyCode.N))
+            OffHighlight(test);
         if (Input.GetKeyDown(KeyCode.A))
             NextGuide();
         if (OVRInput.GetDown(OVRInput.Button.Two))
@@ -123,10 +131,25 @@ public class SelectUI : MonoBehaviour
 
     void GuideHighLight(int i)
     {
-        foreach(Element highlight in listElements)
+        List<Guide> guide = guideList[selectedMachine].parts[selectedParts].guide;
+
+        foreach (Element highlight in listElements)
             highlight.highlight.SetActive(false);
 
         listElements[i].highlight.SetActive(true);
+
+        if(i != 0)
+        {
+            for(int j = 0; j < guide[i - 1].highlitTarget.Count; j++)
+            {
+                OffHighlight(guide[i - 1].highlitTarget[j]);
+            }
+        }
+
+        for (int j = 0; j < guide[i - 1].highlitTarget.Count; j++)
+        {
+            OnHighlight(guide[i].highlitTarget[j]);
+        }
     }
 
     void StartGuide()
@@ -189,6 +212,19 @@ public class SelectUI : MonoBehaviour
             Destroy(item.gameObject);
         listElements = new List<Element>();
     }
+
+    void OnHighlight(MeshRenderer target)
+    {
+        backupMatiral = target.material;
+        highlightMatiral.SetTexture("_Occlusion", target.material.mainTexture);
+        highlightMatiral.SetTexture("_Texture2D", target.material.mainTexture);
+        target.material = highlightMatiral;
+    }
+
+    void OffHighlight(MeshRenderer target)
+    {
+        target.material = backupMatiral;
+    }
 }
 
 [System.Serializable]
@@ -219,4 +255,5 @@ class Guide
 {
     [TextArea] public string guideTitle;
     [TextArea] public string guideText;
+    public List<MeshRenderer> highlitTarget;
 }
