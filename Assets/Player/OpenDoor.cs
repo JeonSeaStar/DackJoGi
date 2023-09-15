@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     public static OpenDoor Instance;
 
     public GameObject door;
+    public GameObject door1;
 
     public void Awake()
     {
@@ -15,6 +16,7 @@ public class OpenDoor : MonoBehaviour
 
     public void OpenDoorB()
     {
-        door.transform.rotation = Quaternion.Euler(-130, 90, 90);
+        door.SetActive(false);
+        door1.SetActive(true);
     }
 }

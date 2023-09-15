@@ -63,12 +63,12 @@ public class BlowGun : MonoBehaviour
             {
                 if ((OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= 0.8f) || (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.8f))
                 {
-                    //airForce.Play();
+                    airForce.Play();
                     air.gameObject.SetActive(true);
                 }
                 else
                 {
-                    //airForce.Pause();
+                    airForce.Pause();
                     air.gameObject.SetActive(false);
                 }
             }
