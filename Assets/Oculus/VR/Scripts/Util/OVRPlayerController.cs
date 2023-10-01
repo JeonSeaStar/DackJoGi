@@ -19,6 +19,7 @@
  */
 
 using System;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 /// <summary>
@@ -239,6 +240,7 @@ public class OVRPlayerController : MonoBehaviour
             else
                 return;
         }
+        HandInput();
 
         //todo: enable for Unity Input System
 #if ENABLE_LEGACY_INPUT_MANAGER
@@ -646,4 +648,65 @@ public class OVRPlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(euler);
         }
     }
+
+
+    #region 내가 추가한 것-------------------------------------------
+
+    public bool handGrapL;
+    public bool handGrapR;
+    public bool handTriggerL;
+    public bool handTriggerR;
+
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
+
+    public bool preBuckles = false;
+    public bool afterBuckles = false;
+    public GameObject[] buckles;
+
+    public bool clearUpperDirty;
+    public bool clearFilterDirty;
+    public bool clearBaseDirty;
+    public GameObject[] dirtys;
+
+    public GameObject[] Process;
+
+
+    public Material upperDirtyMat;
+    public Material filterDirtyMat;
+    public Material baseDirtyMat;
+
+    public GameObject[] beforeTools;
+    public GameObject[] afterTools;
+
+    private void HandInput()
+    {
+        handGrapL = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 0.8f) ? true : false;
+        handTriggerL = (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= 0.8f) ? true : false;
+        handGrapR = (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) >= 0.8f) ? true : false;
+        handTriggerR = (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.8f) ? true : false;
+    }
+
+    private void ChangeTable()
+    {
+        for(int i = 0; i < beforeTools.Length; i++) 
+        {
+            beforeTools[i].gameObject.SetActive(false);
+        }
+        for(int i = 0;i < afterTools.Length; i++) 
+        {
+            afterTools[i].gameObject.SetActive(true);
+        }
+    }
+
+    public void ProcessClear01() { Process[0].SetActive(false); Process[1].SetActive(true); }
+    public void ProcessClear02() { Process[1].SetActive(false); Process[2].SetActive(true); }
+    public void ProcessClear03() { Process[2].SetActive(false); Process[3].SetActive(true); }
+    public void ProcessClear04() { Process[3].SetActive(false); Process[4].SetActive(true); ChangeTable(); }
+    public void ProcessClear05() { Process[4].SetActive(false); Process[5].SetActive(true); }
+    public void ProcessClear06() { Process[5].SetActive(false); Process[6].SetActive(true); }
+    public void ProcessClear07() { Process[6].SetActive(false); Process[7].SetActive(true); }
+    public void ProcessAllClear() { }
+
+    #endregion
 }
