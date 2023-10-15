@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &205240686
 GameObject:
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &243755408
 GameObject:
@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &264700418
 GameObject:
@@ -2589,6 +2589,21 @@ PrefabInstance:
       objectReference: {fileID: 822019786}
     - target: {fileID: 5420787141069106573, guid: d6c42a02f710daf478ac2c10e53dc3aa,
         type: 3}
+      propertyPath: baseDirtyMat
+      value: 
+      objectReference: {fileID: 2100000, guid: c5f66881d18ff89499b14ad979470f77, type: 2}
+    - target: {fileID: 5420787141069106573, guid: d6c42a02f710daf478ac2c10e53dc3aa,
+        type: 3}
+      propertyPath: upperDirtyMat
+      value: 
+      objectReference: {fileID: 2100000, guid: ea0cc006ecb73a448a164db55d2ad236, type: 2}
+    - target: {fileID: 5420787141069106573, guid: d6c42a02f710daf478ac2c10e53dc3aa,
+        type: 3}
+      propertyPath: filterDirtyMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 26cbe1667ae4af44c977bd5cf3870e10, type: 2}
+    - target: {fileID: 5420787141069106573, guid: d6c42a02f710daf478ac2c10e53dc3aa,
+        type: 3}
       propertyPath: dirtys.Array.size
       value: 27
       objectReference: {fileID: 0}
@@ -3103,7 +3118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &421884585
 GameObject:
@@ -3300,7 +3315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &447295659
 GameObject:
@@ -3595,7 +3610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &500654011
 GameObject:
@@ -3815,7 +3830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &548663296
 GameObject:
@@ -3892,7 +3907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &553860034
 GameObject:
@@ -4128,7 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1001 &650843873
 PrefabInstance:
@@ -5126,7 +5141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &784193862
 GameObject:
@@ -5327,6 +5342,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &822019789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5420787141069106573, guid: d6c42a02f710daf478ac2c10e53dc3aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 384957403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822019780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823718359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5402,7 +5429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1001 &828994566
 PrefabInstance:
@@ -7086,7 +7113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1073976644
 GameObject:
@@ -7305,7 +7332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1001 &1091948646
 PrefabInstance:
@@ -7693,7 +7720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &1129513561
 GameObject:
@@ -8146,7 +8173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1268406884
 GameObject:
@@ -8306,7 +8333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1282841897
 GameObject:
@@ -9063,7 +9090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18415adeeb5a1944688159bfc2bb0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 1
 --- !u!1 &1371200892
 GameObject:
@@ -9461,7 +9488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1507384654
 GameObject:
@@ -10473,7 +10500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1696805534
 GameObject:
@@ -10903,7 +10930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!4 &1778611542 stripped
 Transform:
@@ -10986,7 +11013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1824321981
 GameObject:
@@ -11146,7 +11173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1837997780
 GameObject:
@@ -11486,7 +11513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1876110854
 GameObject:
@@ -11836,7 +11863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &1919825139
 GameObject:
@@ -12515,7 +12542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1 &2014021622
 GameObject:
@@ -12592,7 +12619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f459de5045986c4c8248d452e87600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!1001 &2037434636
 PrefabInstance:
@@ -13422,7 +13449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49097946148eef409c5627828b6401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
   changeMatFloat: 0
 --- !u!114 &52294927002852073
 MonoBehaviour:
@@ -19881,7 +19908,7 @@ MonoBehaviour:
   HandType: 0
   _pointerPoseRoot: {fileID: 5550776017431085314}
   m_showState: 3
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
 --- !u!4 &2295584372403603536
 Transform:
   m_ObjectHideFlags: 0
@@ -20799,7 +20826,7 @@ MonoBehaviour:
   HandType: 1
   _pointerPoseRoot: {fileID: 5550776017431085314}
   m_showState: 3
-  controller: {fileID: 0}
+  controller: {fileID: 822019789}
 --- !u!114 &2734225619692931924
 MonoBehaviour:
   m_ObjectHideFlags: 0
