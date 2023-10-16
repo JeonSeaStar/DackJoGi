@@ -18,6 +18,19 @@ TagManager:
   - FilterUpperCheck
   - TableUpper
   - TableInner
+  - OilFilterValve
+  - OilBottle
+  - OilFilter
+  - OilBowl
+  - OilGrease
+  - TableIOilFilter
+  - OilFilterGrease
+  - OilBowlCheck
+  - OilDirty
+  - OilFilterCheck
+  - NewOilFilter
+  - OilFilterValveClose
+  - DelOliFilter
   layers:
   - Default
   - TransparentFX

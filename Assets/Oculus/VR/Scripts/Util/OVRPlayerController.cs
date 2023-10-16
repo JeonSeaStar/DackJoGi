@@ -660,6 +660,7 @@ public class OVRPlayerController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClips;
 
+    [Header("Air Filter Part")]
     public bool preBuckles = false;
     public bool afterBuckles = false;
     public GameObject[] buckles;
@@ -678,6 +679,34 @@ public class OVRPlayerController : MonoBehaviour
 
     public GameObject[] beforeTools;
     public GameObject[] afterTools;
+    //
+    [Header("Oil Filter Part")]
+    public Animator oilFilterValve;
+    public Animator oilFilterLoose;
+    public Animator oilFilterTight;
+    public Animator oilFilterValveClose;
+
+    public GameObject oilDirtyParticle;
+
+    public bool oilFilterValveOff;
+    public bool oilFilterValveOn;
+    public bool oilBowlSet;
+
+    public bool oilFilterOff;
+    public float oilFilterOffTime;
+
+    public bool oliFilterOn;
+    public float oilFilterOnTime;
+    
+    public GameObject oilDirty;
+    public bool oilDirtyCheck;
+    public bool oilGreaseHand;
+    public bool greaseCheck;
+
+    public bool oilFilterCheck;
+    public bool delOilFilter;
+
+    public GameObject[] oilProcess;
 
     private void HandInput()
     {
@@ -699,6 +728,7 @@ public class OVRPlayerController : MonoBehaviour
         }
     }
 
+    //에어필터
     public void ProcessClear01() { Process[0].SetActive(false); Process[1].SetActive(true); }
     public void ProcessClear02() { Process[1].SetActive(false); Process[2].SetActive(true); }
     public void ProcessClear03() { Process[2].SetActive(false); Process[3].SetActive(true); }
@@ -707,6 +737,14 @@ public class OVRPlayerController : MonoBehaviour
     public void ProcessClear06() { Process[5].SetActive(false); Process[6].SetActive(true); }
     public void ProcessClear07() { Process[6].SetActive(false); Process[7].SetActive(true); }
     public void ProcessAllClear() { }
+
+    //오일필터
+    public void OilProcessClear01() { oilProcess[0].SetActive(false); Process[1].SetActive(true); }
+    public void OilProcessClear02() { oilProcess[1].SetActive(false); Process[2].SetActive(true); }
+    public void OilProcessClear03() { oilProcess[2].SetActive(false); Process[3].SetActive(true); }
+    public void OilProcessClear04() { oilProcess[3].SetActive(false); Process[4].SetActive(true); }
+    public void OilProcessClear05() { oilProcess[4].SetActive(false); Process[5].SetActive(true); }
+    public void OilProcessAllClear() { }
 
     #endregion
 }
