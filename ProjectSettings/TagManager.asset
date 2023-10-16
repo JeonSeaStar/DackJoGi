@@ -11,6 +11,13 @@ TagManager:
   - Hand
   - HandTowal
   - Air
+  - table
+  - Buckle
+  - Dirty
+  - FilterCheck
+  - FilterUpperCheck
+  - TableUpper
+  - TableInner
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 
+using Codice.CM.Triggers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -92,6 +93,11 @@ public class OVRHand : MonoBehaviour,
         }
 
         GetHandState(OVRPlugin.Step.Render);
+    }
+
+    private void Start()
+    {
+        controller = GetComponent<OVRPlayerController>();
     }
 
     private void Update()
@@ -283,4 +289,142 @@ public class OVRHand : MonoBehaviour,
 
         return data;
     }
+
+
+    #region 내가 추가한 것------------------------------------------- 손 같은 경우 왼쪽 오른쪽에 따른 햅틱 필요해보임
+
+    public OVRPlayerController controller;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Buckle"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                //사운드 및 햅틱
+                //controller.audioSource.PlayOneShot(controller.audioClips[0], 0.1f);
+                //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RHand);
+            }
+        }
+        if (other.CompareTag("HandTowal"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+            }
+        }
+        if (other.CompareTag("BlowGun"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+            }
+        }
+        if (other.CompareTag("FilterInner"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+            }
+        }
+        if (other.CompareTag("FilterUpper"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+            }
+        }
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Buckle"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+                other.gameObject.SetActive(false);
+                CheckPreBuckels();
+                CheckAfterBukels();
+        }
+
+        if(other.CompareTag("HandTowal"))
+        {
+            CheckUpperDirty();
+            CheckBaseDirty();
+        }
+
+        if(other.CompareTag("BlowGun"))
+        {
+            CheckFilterDirty();
+        }
+    }
+
+    private void CheckPreBuckels()
+    {
+        if (!controller.preBuckles)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (!controller.buckles[i].gameObject.activeSelf)
+                {
+                    controller.preBuckles = true;
+                    controller.ProcessClear01();
+                }
+            }
+        }
+    }
+
+    private void CheckAfterBukels()
+    {
+        if (controller.preBuckles)
+        {
+            for (int i = 4; i < 8; i++)
+            {
+                if (!controller.buckles[i].gameObject.activeSelf)
+                {
+                    controller.afterBuckles = true;
+                    controller.ProcessClear07();
+                }
+            }
+        }
+    }
+
+    private void CheckUpperDirty()
+    {
+        for(int i = 0; i < 7; i ++)
+        {
+            if (!controller.dirtys[i].gameObject.activeSelf)
+            {
+                controller.clearUpperDirty = true;
+                controller.upperDirtyMat.SetFloat("_DetailScale", 0f);
+            }
+        }
+    }
+    
+    private void CheckFilterDirty()
+    {
+        for (int i = 7; i < 19 ; i++)
+        {
+            if (!controller.dirtys[i].gameObject.activeSelf)
+            {
+                controller.clearFilterDirty = true;
+                controller.filterDirtyMat.SetFloat("_DetailScale", 0f);
+            }
+        }
+    }
+
+    private void CheckBaseDirty()
+    {
+        for (int i = 19; i < 27; i++)
+        {
+            if (!controller.dirtys[i].gameObject.activeSelf)
+            {
+                controller.clearBaseDirty = true;
+                controller.baseDirtyMat.SetFloat("_DetailScale", 0f);
+                controller.ProcessClear04();
+            }
+        }
+    }
+
+    #endregion
 }
