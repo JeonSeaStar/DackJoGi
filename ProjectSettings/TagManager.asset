@@ -31,6 +31,16 @@ TagManager:
   - NewOilFilter
   - OilFilterValveClose
   - DelOliFilter
+  - BuckleClose1
+  - BuckleClose2
+  - BuckleClose3
+  - BuckleClose4
+  - BuckleOpen1
+  - BuckleOpen2
+  - BuckleOpen3
+  - BuckleOpen4
+  - Oring
+  - AirCompressorChecker
   layers:
   - Default
   - TransparentFX

@@ -663,8 +663,8 @@ public class OVRPlayerController : MonoBehaviour
     [Header("Air Filter Part")]
     public bool preBuckles = false;
     public bool afterBuckles = false;
-    public GameObject[] buckles;
-
+    public GameObject[] bucklesClose;
+    public GameObject[] bucklesOpen;
     public bool clearUpperDirty;
     public bool clearFilterDirty;
     public bool clearBaseDirty;

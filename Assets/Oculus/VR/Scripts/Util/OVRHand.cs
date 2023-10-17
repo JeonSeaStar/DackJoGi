@@ -297,13 +297,85 @@ public class OVRHand : MonoBehaviour,
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Buckle"))
+        if (other.CompareTag("BuckleClose1"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
                 //»ç¿îµå ¹× ÇÝÆ½
                 //controller.audioSource.PlayOneShot(controller.audioClips[0], 0.1f);
                 //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RHand);
+                controller.bucklesClose[0].gameObject.SetActive(false);
+                controller.bucklesOpen[0].gameObject.SetActive(true);
+            }
+        }
+        if (other.CompareTag("BuckleClose2"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[1].gameObject.SetActive(false);
+                controller.bucklesOpen[1].gameObject.SetActive(true);
+            }
+        }
+        if (other.CompareTag("BuckleClose3"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[2].gameObject.SetActive(false);
+                controller.bucklesOpen[2].gameObject.SetActive(true);
+            }
+        }
+        if (other.CompareTag("BuckleClose4"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[3].gameObject.SetActive(false);
+                controller.bucklesOpen[3].gameObject.SetActive(true);
+            }
+        }
+        if (other.CompareTag("BuckleOpen1"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[0].gameObject.SetActive(true);
+                controller.bucklesOpen[0].gameObject.SetActive(false);
+            }
+        }
+        if (other.CompareTag("BuckleOpen2"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[1].gameObject.SetActive(true);
+                controller.bucklesOpen[1].gameObject.SetActive(false);
+            }
+        }
+        if (other.CompareTag("BuckleOpen3"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[2].gameObject.SetActive(true);
+                controller.bucklesOpen[2].gameObject.SetActive(false);
+            }
+        }
+        if (other.CompareTag("BuckleOpen4"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[3].gameObject.SetActive(true);
+                controller.bucklesOpen[3].gameObject.SetActive(false);
+            }
+        }
+        if(other.CompareTag("Oring"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
             }
         }
         if (other.CompareTag("HandTowal"))
@@ -334,6 +406,8 @@ public class OVRHand : MonoBehaviour,
 
             }
         }
+        
+        //
         if (other.CompareTag("OilFilterValve"))
         {
             if (controller.handGrapL || controller.handGrapR)
@@ -372,13 +446,22 @@ public class OVRHand : MonoBehaviour,
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Buckle"))
+        if (other.CompareTag("BuckleClose1") || other.CompareTag("BuckleClose2") || other.CompareTag("BuckleClose3") || other.CompareTag("BuckleClose4"))
         {
-            if (controller.handGrapL || controller.handGrapR)
-                other.gameObject.SetActive(false);
             CheckPreBuckels();
+        }
+        if (other.CompareTag("BukleOpen1") || other.CompareTag("BukleOpen2") || other.CompareTag("BukleOpen3") || other.CompareTag("BukleOpen4"))
+        {
             CheckAfterBukels();
         }
+        //±»ÀÌ ³ª´­ ÇÊ¿ä?
+        //if (other.CompareTag("FilterUpper"))
+        //{
+        //    if (controller.handGrapL || controller.handGrapR)
+        //    {
+
+        //    }
+        //}
 
         if (other.CompareTag("HandTowal"))
         {
@@ -441,7 +524,7 @@ public class OVRHand : MonoBehaviour,
         {
             for (int i = 0; i < 4; i++)
             {
-                if (!controller.buckles[i].gameObject.activeSelf)
+                if (controller.bucklesOpen[i].gameObject.activeSelf)
                 {
                     controller.preBuckles = true;
                     controller.ProcessClear01();
@@ -454,9 +537,9 @@ public class OVRHand : MonoBehaviour,
     {
         if (controller.preBuckles)
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (!controller.buckles[i].gameObject.activeSelf)
+                if (controller.bucklesClose[i].gameObject.activeSelf)
                 {
                     controller.afterBuckles = true;
                     controller.ProcessClear07();
