@@ -403,7 +403,8 @@ public class OVRHand : MonoBehaviour,
         {
             if (controller.handGrapL || controller.handGrapR)
             {
-
+                controller.checkOrings[0].SetActive(false);
+                controller.checkOrings[1].SetActive(true);
             }
         }
         
@@ -474,6 +475,7 @@ public class OVRHand : MonoBehaviour,
             CheckFilterDirty();
         }
 
+
         //
         if (other.CompareTag("OilFilter"))
         {
@@ -522,7 +524,7 @@ public class OVRHand : MonoBehaviour,
     {
         if (!controller.preBuckles)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < controller.bucklesOpen.Length; i++)
             {
                 if (controller.bucklesOpen[i].gameObject.activeSelf)
                 {
@@ -537,12 +539,12 @@ public class OVRHand : MonoBehaviour,
     {
         if (controller.preBuckles)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < controller.bucklesClose.Length; i++)
             {
                 if (controller.bucklesClose[i].gameObject.activeSelf)
                 {
                     controller.afterBuckles = true;
-                    controller.ProcessClear07();
+                    controller.ProcessClear08();
                 }
             }
         }
@@ -550,9 +552,9 @@ public class OVRHand : MonoBehaviour,
 
     private void CheckUpperDirty()
     {
-        for(int i = 0; i < 7; i ++)
+        for(int i = 0; i < controller.upperDirtys.Length; i ++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.upperDirtys[i].gameObject.activeSelf)
             {
                 controller.clearUpperDirty = true;
                 controller.upperDirtyMat.SetFloat("_DetailScale", 0f);
@@ -562,9 +564,9 @@ public class OVRHand : MonoBehaviour,
     
     private void CheckFilterDirty()
     {
-        for (int i = 7; i < 19 ; i++)
+        for (int i = 0; i < controller.airDirtys.Length ; i++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.airDirtys[i].gameObject.activeSelf)
             {
                 controller.clearFilterDirty = true;
                 controller.filterDirtyMat.SetFloat("_DetailScale", 0f);
@@ -574,13 +576,21 @@ public class OVRHand : MonoBehaviour,
 
     private void CheckBaseDirty()
     {
-        for (int i = 19; i < 27; i++)
+        for (int i = 0; i < controller.baseDirtys.Length; i++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.baseDirtys[i].gameObject.activeSelf)
             {
                 controller.clearBaseDirty = true;
                 controller.baseDirtyMat.SetFloat("_DetailScale", 0f);
-                controller.ProcessClear04();
+                if(!controller.airCompressorCheck)
+                {
+                    controller.ProcessClear04();
+                    controller.ChangeTable();
+                }
+                else
+                {
+                    controller.PartProcessClear01();
+                }
             }
         }
     }

@@ -668,17 +668,25 @@ public class OVRPlayerController : MonoBehaviour
     public bool clearUpperDirty;
     public bool clearFilterDirty;
     public bool clearBaseDirty;
-    public GameObject[] dirtys;
+    public GameObject[] upperDirtys;
+    public GameObject[] airDirtys;
+    public GameObject[] baseDirtys;
 
     public GameObject[] Process;
+    public GameObject[] PartProcess; //airCompressorCheck = true 면 사용
 
 
     public Material upperDirtyMat;
     public Material filterDirtyMat;
     public Material baseDirtyMat;
 
-    public GameObject[] beforeTools;
-    public GameObject[] afterTools;
+    public GameObject beforeTable;
+    public GameObject afterTable;
+
+    public GameObject[] checkOrings;
+    public bool airCompressorCheck;
+
+
     //
     [Header("Oil Filter Part")]
     public Animator oilFilterValve;
@@ -716,27 +724,42 @@ public class OVRPlayerController : MonoBehaviour
         handTriggerR = (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.8f) ? true : false;
     }
 
-    private void ChangeTable()
+    public void ChangeTable()
     {
-        for(int i = 0; i < beforeTools.Length; i++) 
-        {
-            beforeTools[i].gameObject.SetActive(false);
-        }
-        for(int i = 0;i < afterTools.Length; i++) 
-        {
-            afterTools[i].gameObject.SetActive(true);
-        }
+        beforeTable.gameObject.SetActive(false);
+        afterTable.gameObject.SetActive(true);
     }
 
     //에어필터
     public void ProcessClear01() { Process[0].SetActive(false); Process[1].SetActive(true); }
     public void ProcessClear02() { Process[1].SetActive(false); Process[2].SetActive(true); }
     public void ProcessClear03() { Process[2].SetActive(false); Process[3].SetActive(true); }
-    public void ProcessClear04() { Process[3].SetActive(false); Process[4].SetActive(true); ChangeTable(); }
+    public void ProcessClear04() 
+    {
+        if(!airCompressorCheck && clearBaseDirty)
+        {
+            Process[3].SetActive(false);
+            Process[4].SetActive(true);
+            //ChangeTable();
+        }
+    }
     public void ProcessClear05() { Process[4].SetActive(false); Process[5].SetActive(true); }
     public void ProcessClear06() { Process[5].SetActive(false); Process[6].SetActive(true); }
     public void ProcessClear07() { Process[6].SetActive(false); Process[7].SetActive(true); }
+    public void ProcessClear08() { Process[7].SetActive(false); Process[8].SetActive(true); }
+
     public void ProcessAllClear() { }
+
+    public void PartProcessClear01() 
+    { 
+        if(airCompressorCheck && clearBaseDirty)
+        {
+            Process[3].SetActive(false);
+            PartProcess[0].SetActive(true);
+        }
+    }
+    public void PartProcessClear02() { PartProcess[0].SetActive(false); PartProcess[1].SetActive(true); }
+    public void PartProcessClear03() { PartProcess[1].SetActive(false); Process[4].SetActive(true); }
 
     //오일필터
     public void OilProcessClear01() { oilProcess[0].SetActive(false); Process[1].SetActive(true); }

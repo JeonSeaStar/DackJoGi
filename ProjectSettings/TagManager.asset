@@ -41,6 +41,8 @@ TagManager:
   - BuckleOpen4
   - Oring
   - AirCompressorChecker
+  - AirDirty
+  - OutterFilter
   layers:
   - Default
   - TransparentFX

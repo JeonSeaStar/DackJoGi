@@ -6,16 +6,20 @@ public class BeforeUpper : MonoBehaviour
 {
     public OVRPlayerController controller;
     public GameObject[] Uppers;
+    public GameObject[] orings;
 
     private void OnTriggerEnter(Collider other)
     {
         if(controller.clearUpperDirty)
         {
-            if (other.gameObject.CompareTag("TableUpper"))
+            if (other.gameObject.CompareTag("FilterUpperCheck"))
             {
                 Uppers[0].gameObject.SetActive(false);
                 Uppers[1].gameObject.SetActive(true);
-                controller.ProcessClear02();
+
+                orings[0].SetActive(false);
+                orings[1].SetActive(true);
+                
             }
         }
     }
