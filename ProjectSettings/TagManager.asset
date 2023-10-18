@@ -43,6 +43,8 @@ TagManager:
   - AirCompressorChecker
   - AirDirty
   - OutterFilter
+  - LightChecker
+  - Head
   layers:
   - Default
   - TransparentFX

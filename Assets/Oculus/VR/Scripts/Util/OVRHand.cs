@@ -475,7 +475,6 @@ public class OVRHand : MonoBehaviour,
             CheckFilterDirty();
         }
 
-
         //
         if (other.CompareTag("OilFilter"))
         {

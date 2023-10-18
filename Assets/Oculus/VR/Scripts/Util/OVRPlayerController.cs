@@ -716,6 +716,9 @@ public class OVRPlayerController : MonoBehaviour
 
     public GameObject[] oilProcess;
 
+    [Header("Other")]
+    public bool isSafey;
+
     private void HandInput()
     {
         handGrapL = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 0.8f) ? true : false;
