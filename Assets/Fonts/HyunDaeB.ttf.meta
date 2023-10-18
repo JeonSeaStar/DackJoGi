@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6ef762b230a02e545a26f3d3316f9278
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - HDharmony
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 48fd40b34039ed643b207663b15919f0, type: 3}
+  - {fileID: 12800000, guid: 2c1bdf01ff43b4f438552f1c499a8780, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
