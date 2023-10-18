@@ -10,10 +10,14 @@ public class OilFilter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("OilFilterCheck"))
+        if(playerController.greaseCheck)
         {
-            playerController.oilFilterCheck = true;
-            chage.gameObject.SetActive(false);
+            if (other.CompareTag("OilFilterCheck"))
+            {
+                playerController.oilFilterCheck = true;
+                chage.gameObject.SetActive(false);
+                playerController.OilProcessClear03();
+            }
         }
     }
 }

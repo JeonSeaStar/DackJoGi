@@ -12,7 +12,7 @@ public class DelOilFilter : MonoBehaviour
     {
         if (other.CompareTag("OilFilter"))
         {
-            playerController.OilProcessClear03();
+            playerController.OilProcessClear02();
             playerController.delOilFilter = true;
             chage.SetActive(true);
         }

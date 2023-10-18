@@ -714,6 +714,7 @@ public class OVRPlayerController : MonoBehaviour
     public bool oilFilterCheck;
     public bool delOilFilter;
 
+    public GameObject[] oilProcessObjects;
     public GameObject[] oilProcess;
 
     [Header("Other")]
@@ -722,8 +723,23 @@ public class OVRPlayerController : MonoBehaviour
     [Header("StartEvent")]
     public GameObject[] AirFilterStartObjects;
     public GameObject[] OilFilterStartObjects;
-    
-    
+
+
+    [Header("RequestEvent")]
+    public GameObject[] AirFilterRequest01;
+    public GameObject[] AirFilterRequest02;
+    public GameObject[] AirFilterRequest03;
+
+    public GameObject[] OilFilterRequest01;
+    public GameObject[] OilFilterRequest02;
+
+    public bool AirFilterRequest01Pass;
+    public bool AirFilterRequest02Pass;
+    public bool AirFilterRequest03Pass;
+
+    public bool OilFilterRequest01Pass;
+    public bool OilFilterRequest02Pass;
+
     private void HandInput()
     {
         handGrapL = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 0.8f) ? true : false;

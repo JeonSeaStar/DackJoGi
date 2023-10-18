@@ -8,6 +8,7 @@ public class OilBottle : MonoBehaviour
     public float tiltTime = 0;
     public bool oilFilterClose;
     public ParticleSystem particle;
+    public GameObject[] chage;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,9 +33,10 @@ public class OilBottle : MonoBehaviour
         {
             
             tiltTime = Time.deltaTime;
-            if(tiltTime == 5f)
+            if(tiltTime == 2f)
             {
-                //todo
+                chage[0].SetActive(false);
+                chage[1].SetActive(true);
             }
 
         }
