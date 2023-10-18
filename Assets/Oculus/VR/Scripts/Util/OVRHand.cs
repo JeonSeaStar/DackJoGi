@@ -451,7 +451,7 @@ public class OVRHand : MonoBehaviour,
         {
             CheckPreBuckels();
         }
-        if (other.CompareTag("BukleOpen1") || other.CompareTag("BukleOpen2") || other.CompareTag("BukleOpen3") || other.CompareTag("BukleOpen4"))
+        if (other.CompareTag("BuckleOpen1") || other.CompareTag("BuckleOpen2") || other.CompareTag("BuckleOpen3") || other.CompareTag("BuckleOpen4"))
         {
             CheckAfterBukels();
         }

@@ -719,6 +719,11 @@ public class OVRPlayerController : MonoBehaviour
     [Header("Other")]
     public bool isSafey;
 
+    [Header("StartEvent")]
+    public GameObject[] AirFilterStartObjects;
+    public GameObject[] OilFilterStartObjects;
+    
+    
     private void HandInput()
     {
         handGrapL = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) >= 0.8f) ? true : false;
@@ -772,5 +777,21 @@ public class OVRPlayerController : MonoBehaviour
     public void OilProcessClear05() { oilProcess[4].SetActive(false); Process[5].SetActive(true); }
     public void OilProcessAllClear() { }
 
+
+    public void StartAirFilter()
+    {
+        for(int i = 0; i < AirFilterStartObjects.Length; i++)
+        {
+            AirFilterStartObjects[i].SetActive(true);
+        }
+    }
+
+    public void StartOilFilter()
+    {
+        for(int i = 0; i < OilFilterStartObjects.Length; i++)
+        {
+            OilFilterStartObjects[i].SetActive(true);
+        }
+    }
     #endregion
 }

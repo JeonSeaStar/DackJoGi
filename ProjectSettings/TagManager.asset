@@ -45,6 +45,7 @@ TagManager:
   - OutterFilter
   - LightChecker
   - Head
+  - BlowGun
   layers:
   - Default
   - TransparentFX
