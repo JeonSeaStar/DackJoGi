@@ -89,6 +89,8 @@ public class TabletScreen : MonoBehaviour
         CloseApplication();
     }
 
+    public void SetActiveFlase(GameObject target) => target.SetActive(false);
+
     #region 의뢰화면
     private void OpenRequestContents()
     {
@@ -234,20 +236,6 @@ public class TabletScreen : MonoBehaviour
             Destroy(progressGameObject);
         progressGameObjectList = new List<GameObject>();
         progressList = new List<Step>();
-    }
-
-    private void Update()
-    {
-        //CanvasPosition();
-
-        if (Input.GetKeyDown(KeyCode.A))
-            SetProgressGuide(requestList[0]);
-        if (Input.GetKeyDown(KeyCode.S))
-            NextStep(currentStep);
-        if (Input.GetKeyDown(KeyCode.D))
-            OpenTablet();
-        if (Input.GetKeyDown(KeyCode.F))
-            CloseTablet();
     }
     #endregion
     #region 결과창
