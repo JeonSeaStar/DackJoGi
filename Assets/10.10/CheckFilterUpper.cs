@@ -9,11 +9,11 @@ public class CheckFilterUpper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FilterUpperCheck"))
+        if (other.CompareTag("FilterUpper"))
         {
             filterUppers[0].SetActive(false);
             filterUppers[1].SetActive(true);
-            controller.ProcessClear06();
+            controller.ProcessClear07();
         }
     }
 }

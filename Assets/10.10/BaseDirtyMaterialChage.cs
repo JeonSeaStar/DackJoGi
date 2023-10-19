@@ -7,15 +7,11 @@ public class BaseDirtyMaterialChage : MonoBehaviour
     public OVRPlayerController controller;
     public float changeMatFloat;
 
-    void Start()
-    {
-        changeMatFloat = controller.baseDirtyMat.GetFloat("_DetailAlbedoAdjustment");
-        controller = GetComponent<OVRPlayerController>();
-    }
-
     private void OnDisable()
     {
+        changeMatFloat = controller.upperDirtyMat.GetFloat("_DetailAlbedoAdjustment");
         changeMatFloat += 0.12f;
-        controller.baseDirtyMat.SetFloat("_DetailAlbedoAdjustment", changeMatFloat);
+        controller.upperDirtyMat.SetFloat("_DetailAlbedoAdjustment", changeMatFloat);
+
     }
 }

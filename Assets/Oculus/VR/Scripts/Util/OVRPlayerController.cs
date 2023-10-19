@@ -660,24 +660,86 @@ public class OVRPlayerController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClips;
 
+    [Header("Air Filter Part")]
     public bool preBuckles = false;
     public bool afterBuckles = false;
-    public GameObject[] buckles;
-
+    public GameObject[] bucklesClose;
+    public GameObject[] bucklesOpen;
     public bool clearUpperDirty;
     public bool clearFilterDirty;
     public bool clearBaseDirty;
-    public GameObject[] dirtys;
+    public GameObject[] upperDirtys;
+    public GameObject[] airDirtys;
+    public GameObject[] baseDirtys;
 
     public GameObject[] Process;
+    public GameObject[] PartProcess; //airCompressorCheck = true 면 사용
 
 
     public Material upperDirtyMat;
     public Material filterDirtyMat;
     public Material baseDirtyMat;
 
-    public GameObject[] beforeTools;
-    public GameObject[] afterTools;
+    public GameObject beforeTable;
+    public GameObject afterTable;
+
+    public GameObject[] checkOrings;
+    public bool airCompressorCheck;
+
+
+    //
+    [Header("Oil Filter Part")]
+    public Animator oilFilterValve;
+    public Animator oilFilterLoose;
+    public Animator oilFilterTight;
+    public Animator oilFilterValveClose;
+
+    public GameObject oilDirtyParticle;
+
+    public bool oilFilterValveOff;
+    public bool oilFilterValveOn;
+    public bool oilBowlSet;
+
+    public bool oilFilterOff;
+    public float oilFilterOffTime;
+
+    public bool oliFilterOn;
+    public float oilFilterOnTime;
+    
+    public GameObject oilDirty;
+    public bool oilDirtyCheck;
+    public bool oilGreaseHand;
+    public bool greaseCheck;
+    public bool oilFull;
+
+    public bool oilFilterCheck;
+    public bool delOilFilter;
+
+    public GameObject[] oilProcessObjects;
+    public GameObject[] oilProcess;
+
+    [Header("Other")]
+    public bool isSafey;
+
+    [Header("StartEvent")]
+    public GameObject[] AirFilterStartObjects;
+    public GameObject[] OilFilterStartObjects;
+
+
+    [Header("RequestEvent")]
+    public GameObject[] airFilterRequest01;
+    public GameObject[] airFilterRequest02;
+    public GameObject[] airFilterRequest03;
+
+    public GameObject[] oilFilterRequest01;
+    public GameObject[] oilFilterRequest02;
+
+    public bool AirFilterRequest01Pass;
+    public bool AirFilterRequest02Pass;
+    public bool AirFilterRequest03Pass;
+
+    public bool OilFilterRequest01Pass;
+    public bool OilFilterRequest02Pass;
 
     private void HandInput()
     {
@@ -687,26 +749,103 @@ public class OVRPlayerController : MonoBehaviour
         handTriggerR = (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.8f) ? true : false;
     }
 
-    private void ChangeTable()
+    public void ChangeTable()
     {
-        for(int i = 0; i < beforeTools.Length; i++) 
-        {
-            beforeTools[i].gameObject.SetActive(false);
-        }
-        for(int i = 0;i < afterTools.Length; i++) 
-        {
-            afterTools[i].gameObject.SetActive(true);
-        }
+        beforeTable.gameObject.SetActive(false);
+        afterTable.gameObject.SetActive(true);
     }
 
+    //에어필터
     public void ProcessClear01() { Process[0].SetActive(false); Process[1].SetActive(true); }
     public void ProcessClear02() { Process[1].SetActive(false); Process[2].SetActive(true); }
     public void ProcessClear03() { Process[2].SetActive(false); Process[3].SetActive(true); }
-    public void ProcessClear04() { Process[3].SetActive(false); Process[4].SetActive(true); ChangeTable(); }
+    public void ProcessClear04() 
+    {
+        if(!airCompressorCheck && clearBaseDirty)
+        {
+            Process[3].SetActive(false);
+            Process[4].SetActive(true);
+            //ChangeTable();
+        }
+    }
     public void ProcessClear05() { Process[4].SetActive(false); Process[5].SetActive(true); }
     public void ProcessClear06() { Process[5].SetActive(false); Process[6].SetActive(true); }
     public void ProcessClear07() { Process[6].SetActive(false); Process[7].SetActive(true); }
+    public void ProcessClear08() { Process[7].SetActive(false); Process[8].SetActive(true); }
+
     public void ProcessAllClear() { }
 
+    public void PartProcessClear01() 
+    { 
+        if(airCompressorCheck && clearBaseDirty)
+        {
+            Process[3].SetActive(false);
+            PartProcess[0].SetActive(true);
+        }
+    }
+    public void PartProcessClear02() { PartProcess[0].SetActive(false); PartProcess[1].SetActive(true); }
+    public void PartProcessClear03() { PartProcess[1].SetActive(false); Process[4].SetActive(true); }
+
+    //오일필터
+    public void OilProcessClear01() { oilProcess[0].SetActive(false); Process[1].SetActive(true); }
+    public void OilProcessClear02() { oilProcess[1].SetActive(false); Process[2].SetActive(true); }
+    public void OilProcessClear03() { oilProcess[2].SetActive(false); Process[3].SetActive(true); }
+    public void OilProcessClear04() { oilProcess[3].SetActive(false); Process[4].SetActive(true); }
+    public void OilProcessClear05() { oilProcess[4].SetActive(false); Process[5].SetActive(true); }
+    public void OilProcessAllClear() { }
+
+
+    public void StartAirFilter()
+    {
+        for(int i = 0; i < AirFilterStartObjects.Length; i++)
+        {
+            AirFilterStartObjects[i].SetActive(true);
+        }
+    }
+
+    public void StartOilFilter()
+    {
+        for(int i = 0; i < OilFilterStartObjects.Length; i++)
+        {
+            OilFilterStartObjects[i].SetActive(true);
+        }
+    }
+
+    public void AirFilterRequest01()
+    {
+        for (int i = 0; i < airFilterRequest01.Length; i++)
+        {
+            airFilterRequest01[i].SetActive(true);
+        }
+    }
+    public void AirFilterRequest02()
+    {
+        for (int i = 0; i < airFilterRequest02.Length; i++)
+        {
+            airFilterRequest02[i].SetActive(true);
+        }
+    }
+    public void AirFilterRequest03()
+    {
+        for (int i = 0; i < airFilterRequest03.Length; i++)
+        {
+            airFilterRequest03[i].SetActive(true);
+        }
+    }
+
+    public void OilFilterRequest01()
+    {
+        for (int i = 0; i < oilFilterRequest01.Length; i++)
+        {
+            oilFilterRequest01[i].SetActive(true);
+        }
+    }
+    public void OilFilterRequest02()
+    {
+        for (int i = 0; i < oilFilterRequest02.Length; i++)
+        {
+            oilFilterRequest02[i].SetActive(true);
+        }
+    }
     #endregion
 }

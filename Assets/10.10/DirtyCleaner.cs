@@ -6,9 +6,10 @@ public class DirtyCleaner : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Dirty"))
+        if (other.CompareTag("Dirty"))
         {
             other.gameObject.SetActive(false);
+
         }
     }
 }

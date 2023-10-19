@@ -18,6 +18,35 @@ TagManager:
   - FilterUpperCheck
   - TableUpper
   - TableInner
+  - OilFilterValve
+  - OilBottle
+  - OilFilter
+  - OilBowl
+  - OilGrease
+  - TableIOilFilter
+  - OilFilterGrease
+  - OilBowlCheck
+  - OilDirty
+  - OilFilterCheck
+  - NewOilFilter
+  - OilFilterValveClose
+  - DelOliFilter
+  - BuckleClose1
+  - BuckleClose2
+  - BuckleClose3
+  - BuckleClose4
+  - BuckleOpen1
+  - BuckleOpen2
+  - BuckleOpen3
+  - BuckleOpen4
+  - Oring
+  - AirCompressorChecker
+  - AirDirty
+  - OutterFilter
+  - LightChecker
+  - Head
+  - BlowGun
+  - RequestOilFilterOpen
   layers:
   - Default
   - TransparentFX

@@ -297,75 +297,249 @@ public class OVRHand : MonoBehaviour,
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Buckle"))
+        if (other.CompareTag("BuckleClose1"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
                 //사운드 및 햅틱
                 //controller.audioSource.PlayOneShot(controller.audioClips[0], 0.1f);
                 //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RHand);
+                controller.bucklesClose[0].gameObject.SetActive(false);
+                controller.bucklesOpen[0].gameObject.SetActive(true);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleClose2"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[1].gameObject.SetActive(false);
+                controller.bucklesOpen[1].gameObject.SetActive(true);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleClose3"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[2].gameObject.SetActive(false);
+                controller.bucklesOpen[2].gameObject.SetActive(true);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleClose4"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[3].gameObject.SetActive(false);
+                controller.bucklesOpen[3].gameObject.SetActive(true);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleOpen1"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[0].gameObject.SetActive(true);
+                controller.bucklesOpen[0].gameObject.SetActive(false);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleOpen2"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[1].gameObject.SetActive(true);
+                controller.bucklesOpen[1].gameObject.SetActive(false);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleOpen3"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[2].gameObject.SetActive(true);
+                controller.bucklesOpen[2].gameObject.SetActive(false);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if (other.CompareTag("BuckleOpen4"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+
+                controller.bucklesClose[3].gameObject.SetActive(true);
+                controller.bucklesOpen[3].gameObject.SetActive(false);
+                controller.audioSource.PlayOneShot(controller.audioClips[1]);
+            }
+        }
+        if(other.CompareTag("Oring"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.audioSource.PlayOneShot(controller.audioClips[0]);
             }
         }
         if (other.CompareTag("HandTowal"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
-
+                controller.audioSource.PlayOneShot(controller.audioClips[16]);
             }
         }
         if (other.CompareTag("BlowGun"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
-
+                controller.audioSource.PlayOneShot(controller.audioClips[0]);
             }
         }
         if (other.CompareTag("FilterInner"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
-
+                controller.audioSource.PlayOneShot(controller.audioClips[0]);
             }
         }
         if (other.CompareTag("FilterUpper"))
         {
             if (controller.handGrapL || controller.handGrapR)
             {
-
+                controller.audioSource.PlayOneShot(controller.audioClips[0]);
+                controller.checkOrings[0].SetActive(false);
+                controller.checkOrings[1].SetActive(true);
+            }
+        }
+        
+        //
+        if (other.CompareTag("OilFilterValve"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.audioSource.PlayOneShot(controller.audioClips[14]);
+                controller.oilFilterValveOff = true;
+                controller.oilFilterValve.SetTrigger("Start");
+                Invoke("OilProcess01", 1.1f);
+            }
+        }
+        if (other.CompareTag("OilFilterValveClose"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.audioSource.PlayOneShot(controller.audioClips[14]);
+                controller.oilFilterValveOn = true;
+                controller.oilFilterValveClose.SetTrigger("Strat");
+                Invoke("OilProcess05", 1.1f);
             }
         }
 
+        if (other.CompareTag("OilGrease"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.oilGreaseHand = true;
+                controller.audioSource.PlayOneShot(controller.audioClips[16]);
+            }
+        }
+        if (other.CompareTag("OilFilterGrease"))
+        {
+            if (controller.oilGreaseHand)
+            {
+                controller.greaseCheck = true;
+                controller.audioSource.PlayOneShot(controller.audioClips[15]);
+            }
+        }
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Buckle"))
+        if (other.CompareTag("BuckleClose1") || other.CompareTag("BuckleClose2") || other.CompareTag("BuckleClose3") || other.CompareTag("BuckleClose4"))
         {
-            if (controller.handGrapL || controller.handGrapR)
-                other.gameObject.SetActive(false);
-                CheckPreBuckels();
-                CheckAfterBukels();
+            CheckPreBuckels();
         }
+        if (other.CompareTag("BuckleOpen1") || other.CompareTag("BuckleOpen2") || other.CompareTag("BuckleOpen3") || other.CompareTag("BuckleOpen4"))
+        {
+            CheckAfterBukels();
+        }
+        //굳이 나눌 필요?
+        //if (other.CompareTag("FilterUpper"))
+        //{
+        //    if (controller.handGrapL || controller.handGrapR)
+        //    {
 
-        if(other.CompareTag("HandTowal"))
+        //    }
+        //}
+
+        if (other.CompareTag("HandTowal"))
         {
             CheckUpperDirty();
             CheckBaseDirty();
         }
 
-        if(other.CompareTag("BlowGun"))
+        if (other.CompareTag("BlowGun"))
         {
             CheckFilterDirty();
         }
+
+        //
+        if (other.CompareTag("OilFilter"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.oilFilterOffTime += Time.deltaTime;
+                if (controller.oilFilterOffTime >= 3f)
+                {
+                    controller.oilFilterOff = true;
+                    controller.oilFilterLoose.SetTrigger("Start");
+                    Invoke("OilProcessObject01", 2.1f);
+                }
+                if (!controller.oilBowlSet && controller.oilFilterOff && !controller.oilDirtyCheck)
+                {
+                    controller.oilDirtyParticle.SetActive(true);
+
+                    Invoke("OilDirty", 3f);
+                }
+            }
+        }
+
+        //
+        if (other.CompareTag("NewOilFilter"))
+        {
+            if (controller.handGrapL || controller.handGrapR)
+            {
+                controller.oilFilterOnTime += Time.deltaTime;
+                if(controller.oilFilterOnTime >= 3f)
+                {
+                    controller.oliFilterOn = true;
+                    controller.oilFilterTight.SetTrigger("Start");
+                    Invoke("OilProcess04", 2.1f);
+                }
+            }
+        }
+
+    }
+
+    public void OilDirty()
+    {
+        controller.oilDirty.SetActive(true);
+        controller.oilDirtyCheck = true;
+        controller.oilDirtyParticle.SetActive(false);
     }
 
     private void CheckPreBuckels()
     {
         if (!controller.preBuckles)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < controller.bucklesOpen.Length; i++)
             {
-                if (!controller.buckles[i].gameObject.activeSelf)
+                if (controller.bucklesOpen[i].gameObject.activeSelf)
                 {
                     controller.preBuckles = true;
                     controller.ProcessClear01();
@@ -378,12 +552,12 @@ public class OVRHand : MonoBehaviour,
     {
         if (controller.preBuckles)
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = 0; i < controller.bucklesClose.Length; i++)
             {
-                if (!controller.buckles[i].gameObject.activeSelf)
+                if (controller.bucklesClose[i].gameObject.activeSelf)
                 {
                     controller.afterBuckles = true;
-                    controller.ProcessClear07();
+                    controller.ProcessClear08();
                 }
             }
         }
@@ -391,9 +565,9 @@ public class OVRHand : MonoBehaviour,
 
     private void CheckUpperDirty()
     {
-        for(int i = 0; i < 7; i ++)
+        for(int i = 0; i < controller.upperDirtys.Length; i ++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.upperDirtys[i].gameObject.activeSelf)
             {
                 controller.clearUpperDirty = true;
                 controller.upperDirtyMat.SetFloat("_DetailScale", 0f);
@@ -403,9 +577,9 @@ public class OVRHand : MonoBehaviour,
     
     private void CheckFilterDirty()
     {
-        for (int i = 7; i < 19 ; i++)
+        for (int i = 0; i < controller.airDirtys.Length ; i++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.airDirtys[i].gameObject.activeSelf)
             {
                 controller.clearFilterDirty = true;
                 controller.filterDirtyMat.SetFloat("_DetailScale", 0f);
@@ -415,15 +589,53 @@ public class OVRHand : MonoBehaviour,
 
     private void CheckBaseDirty()
     {
-        for (int i = 19; i < 27; i++)
+        for (int i = 0; i < controller.baseDirtys.Length; i++)
         {
-            if (!controller.dirtys[i].gameObject.activeSelf)
+            if (!controller.baseDirtys[i].gameObject.activeSelf)
             {
                 controller.clearBaseDirty = true;
                 controller.baseDirtyMat.SetFloat("_DetailScale", 0f);
-                controller.ProcessClear04();
+                if(!controller.airCompressorCheck)
+                {
+                    controller.ProcessClear04();
+                    controller.ChangeTable();
+                }
+                else
+                {
+                    controller.PartProcessClear01();
+                }
             }
         }
+    }
+
+    //오일프로세스
+    public void OilProcess01()
+    {
+        controller.OilProcessClear01();
+    }
+    public void OilProcess02()//DelOilFilter에서 넘겨줌
+    {
+        controller.OilProcessClear02();
+    }
+    public void OilProcess03() //OilFilter에서 넘겨줌
+    {
+        controller.OilProcessClear03();
+    }
+    public void OilProcess04()
+    {
+        controller.OilProcessClear04();
+    }
+    public void OilProcess05()
+    {
+        controller.OilProcessClear05();
+    }
+
+    //오일 게임 오브젝트들
+    public void OilProcessObject01()
+    {
+        controller.oilProcessObjects[0].SetActive(false);
+        controller.oilProcessObjects[1].SetActive(true);
+        controller.oilFilterOffTime = 0;
     }
 
     #endregion

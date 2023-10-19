@@ -6,17 +6,17 @@ public class FilterDirtyMaterialChage : MonoBehaviour
 {
     public OVRPlayerController controller;
     public float changeMatFloat;
-
-    private void Start()
-    {
-        changeMatFloat = controller.filterDirtyMat.GetFloat("_DetailAlbedoAdjustment");
-        controller = GetComponent<OVRPlayerController>();
-    }
+    public GameObject eyeDirty;
 
     private void OnDisable()
     {
+        changeMatFloat = controller.upperDirtyMat.GetFloat("_DetailAlbedoAdjustment");
         changeMatFloat += 0.1f;
-        controller.filterDirtyMat.SetFloat("_DetailAlbedoAdjustment", changeMatFloat);
+        controller.upperDirtyMat.SetFloat("_DetailAlbedoAdjustment", changeMatFloat);
+        if(!controller.isSafey)
+        {
+            eyeDirty.SetActive(true);
+        }
     }
 
 }
