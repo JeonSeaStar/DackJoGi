@@ -422,6 +422,7 @@ public class OVRHand : MonoBehaviour,
         {
             if (controller.handGrapL || controller.handGrapR)
             {
+                controller.oilFilterGuideObject[0].SetActive(false);
                 controller.audioSource.PlayOneShot(controller.audioClips[14]);
                 controller.oilFilterValveOff = true;
                 controller.oilFilterValve.SetTrigger("Start");
@@ -452,6 +453,10 @@ public class OVRHand : MonoBehaviour,
             if (controller.oilGreaseHand)
             {
                 controller.greaseCheck = true;
+                controller.oilFilterGuideObject[7].SetActive(false);
+                controller.oilFilterGuideObject[8].SetActive(false);
+                controller.oilFilterGuideObject[9].SetActive(true);
+
                 controller.audioSource.PlayOneShot(controller.audioClips[15]);
             }
         }

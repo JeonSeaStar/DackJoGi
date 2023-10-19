@@ -261,6 +261,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 65d186c711e501a44a5102816cb6b707, type: 3}
   - {fileID: 8300000, guid: cb73119b5c776814eaa0b96dd7c6a1bb, type: 3}
   - {fileID: 8300000, guid: e7378ad35c05dc143b3182f10fa5067f, type: 3}
+  airFilterGuideObject: []
   preBuckles: 0
   afterBuckles: 0
   bucklesClose:
@@ -324,6 +325,7 @@ MonoBehaviour:
   afterTable: {fileID: 1117277801}
   checkOrings: []
   airCompressorCheck: 0
+  oilFilterGuideObject: []
   oilFilterValve: {fileID: 1191174094}
   oilFilterLoose: {fileID: 1717425828}
   oilFilterTight: {fileID: 1083747545}
@@ -5209,6 +5211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95121ada9a5b78438368618a2f90b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 2851414}
 --- !u!1 &114122233
 GameObject:
   m_ObjectHideFlags: 0
@@ -16582,6 +16585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95121ada9a5b78438368618a2f90b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 2851414}
 --- !u!1 &391538427
 GameObject:
   m_ObjectHideFlags: 0
@@ -28733,6 +28737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95121ada9a5b78438368618a2f90b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 2851414}
 --- !u!1 &688378156
 GameObject:
   m_ObjectHideFlags: 0
@@ -36498,7 +36503,7 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
@@ -36508,7 +36513,7 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
@@ -36558,12 +36563,12 @@ PrefabInstance:
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 288.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827469655331490988, guid: be3a0201b789a544b9e89eaf36a5651b,
         type: 3}

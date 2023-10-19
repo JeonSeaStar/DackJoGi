@@ -29,6 +29,13 @@ public class BlowGun : MonoBehaviour
                     airForce.Pause();
                     air.gameObject.SetActive(false);
                 }
+                if(controller.clearFilterDirty)
+                {
+                    controller.airFilterGuideObject[10].SetActive(false);
+                    controller.airFilterGuideObject[11].SetActive(false);
+                    controller.airFilterGuideObject[12].SetActive(true);
+
+                }
             }
         }
     }

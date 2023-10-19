@@ -15,6 +15,10 @@ public class OilBowl : MonoBehaviour
             playerController.oilBowlSet = true;
             chage[0].SetActive(false);
             chage[1].SetActive(true);
+            playerController.oilFilterGuideObject[1].SetActive(false);
+            playerController.oilFilterGuideObject[2].SetActive(false);
+            playerController.oilFilterGuideObject[3].SetActive(true);
+            playerController.oilFilterGuideObject[4].SetActive(true);
         }
     }
 }

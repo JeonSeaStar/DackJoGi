@@ -16,6 +16,7 @@ public class BeforeOutter : MonoBehaviour
             {
                 outterFilters[0].SetActive(false);
                 outterFilters[1].SetActive(true);
+                
                 playerController.ProcessClear03();
             }
         }

@@ -661,6 +661,7 @@ public class OVRPlayerController : MonoBehaviour
     public AudioClip[] audioClips;
 
     [Header("Air Filter Part")]
+    public GameObject[] airFilterGuideObject;
     public bool preBuckles = false;
     public bool afterBuckles = false;
     public GameObject[] bucklesClose;
@@ -689,6 +690,7 @@ public class OVRPlayerController : MonoBehaviour
 
     //
     [Header("Oil Filter Part")]
+    public GameObject[] oilFilterGuideObject;
     public Animator oilFilterValve;
     public Animator oilFilterLoose;
     public Animator oilFilterTight;

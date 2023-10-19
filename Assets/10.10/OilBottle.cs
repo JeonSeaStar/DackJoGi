@@ -41,6 +41,10 @@ public class OilBottle : MonoBehaviour
                 chage[1].SetActive(true);
                 
                 playerController.oilFull = true;
+                playerController.oilFilterGuideObject[5].SetActive(false);
+                playerController.oilFilterGuideObject[6].SetActive(false);
+                playerController.oilFilterGuideObject[7].SetActive(true);
+                playerController.oilFilterGuideObject[8].SetActive(true);
             }
 
         }
