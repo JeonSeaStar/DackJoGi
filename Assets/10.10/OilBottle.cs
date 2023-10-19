@@ -7,8 +7,10 @@ public class OilBottle : MonoBehaviour
     public float tilt;
     public float tiltTime = 0;
     public bool oilFilterClose;
-    public ParticleSystem particle;
+    public GameObject particle;
     public GameObject[] chage;
+    public OVRPlayerController playerController; 
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,14 +33,20 @@ public class OilBottle : MonoBehaviour
         tilt = transform.rotation.eulerAngles.z;
         if (tilt > 70f && tilt < 280f && oilFilterClose)// 기울기 왼쪽이 : 70 +- 5도, 오른쪽이 : 280 +- 5도
         {
-            
+            particle.SetActive(true);
             tiltTime = Time.deltaTime;
             if(tiltTime == 2f)
             {
                 chage[0].SetActive(false);
                 chage[1].SetActive(true);
+                
+                playerController.oilFull = true;
             }
 
+        }
+        else
+        {
+            particle.SetActive(false);
         }
     }
 }

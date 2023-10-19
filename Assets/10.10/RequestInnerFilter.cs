@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DelOilFilter : MonoBehaviour
+public class RequestInnerFilter : MonoBehaviour
 {
     public OVRPlayerController playerController;
 
     public GameObject[] chage;
-
+    public Material innerFilterMat;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("OilFilter"))
+        if(other.CompareTag("FilterInner"))
         {
-            playerController.OilProcessClear02();
-            playerController.delOilFilter = true;
-
+            playerController.AirFilterRequest03Pass = true;
+        }
+        if(other.CompareTag("Air"))
+        {
             chage[0].SetActive(false);
             chage[1].SetActive(true);
-            playerController.OilFilterRequest01Pass = true;
+            innerFilterMat.SetFloat("_DetailAlbedoAdjustment", 1);
         }
     }
 }

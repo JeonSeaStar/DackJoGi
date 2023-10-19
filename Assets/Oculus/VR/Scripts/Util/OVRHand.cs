@@ -635,6 +635,7 @@ public class OVRHand : MonoBehaviour,
     {
         controller.oilProcessObjects[0].SetActive(false);
         controller.oilProcessObjects[1].SetActive(true);
+        controller.oilFilterOffTime = 0;
     }
 
     #endregion

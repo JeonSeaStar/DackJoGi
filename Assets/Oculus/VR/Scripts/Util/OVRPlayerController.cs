@@ -710,6 +710,7 @@ public class OVRPlayerController : MonoBehaviour
     public bool oilDirtyCheck;
     public bool oilGreaseHand;
     public bool greaseCheck;
+    public bool oilFull;
 
     public bool oilFilterCheck;
     public bool delOilFilter;
@@ -726,12 +727,12 @@ public class OVRPlayerController : MonoBehaviour
 
 
     [Header("RequestEvent")]
-    public GameObject[] AirFilterRequest01;
-    public GameObject[] AirFilterRequest02;
-    public GameObject[] AirFilterRequest03;
+    public GameObject[] airFilterRequest01;
+    public GameObject[] airFilterRequest02;
+    public GameObject[] airFilterRequest03;
 
-    public GameObject[] OilFilterRequest01;
-    public GameObject[] OilFilterRequest02;
+    public GameObject[] oilFilterRequest01;
+    public GameObject[] oilFilterRequest02;
 
     public bool AirFilterRequest01Pass;
     public bool AirFilterRequest02Pass;
@@ -807,6 +808,43 @@ public class OVRPlayerController : MonoBehaviour
         for(int i = 0; i < OilFilterStartObjects.Length; i++)
         {
             OilFilterStartObjects[i].SetActive(true);
+        }
+    }
+
+    public void AirFilterRequest01()
+    {
+        for (int i = 0; i < airFilterRequest01.Length; i++)
+        {
+            airFilterRequest01[i].SetActive(true);
+        }
+    }
+    public void AirFilterRequest02()
+    {
+        for (int i = 0; i < airFilterRequest02.Length; i++)
+        {
+            airFilterRequest02[i].SetActive(true);
+        }
+    }
+    public void AirFilterRequest03()
+    {
+        for (int i = 0; i < airFilterRequest03.Length; i++)
+        {
+            airFilterRequest03[i].SetActive(true);
+        }
+    }
+
+    public void OilFilterRequest01()
+    {
+        for (int i = 0; i < oilFilterRequest01.Length; i++)
+        {
+            oilFilterRequest01[i].SetActive(true);
+        }
+    }
+    public void OilFilterRequest02()
+    {
+        for (int i = 0; i < oilFilterRequest02.Length; i++)
+        {
+            oilFilterRequest02[i].SetActive(true);
         }
     }
     #endregion
