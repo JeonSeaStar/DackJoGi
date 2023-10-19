@@ -12,4 +12,5 @@ public class Step : MonoBehaviour
     public Image clearLineImage;
     public TextMeshProUGUI count;
     public TextMeshProUGUI explain;
+    public Animator anime;
 }

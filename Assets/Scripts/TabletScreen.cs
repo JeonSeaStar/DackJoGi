@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
 public class TabletScreen : MonoBehaviour
 {
+    [SerializeField] private Transform canvasCenter;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 canvasPosition;
+    [SerializeField] private Animator tabletAnimator;
+
     [Header("ÅÂºí¸´ ¹ÙÅÁÈ­¸é")]
     [SerializeField] private GameObject tablet;
-    [SerializeField] private GameObject[] applicationScreenArray = new GameObject[2];
+    [SerializeField] private List<GameObject> applicationScreenArray = new List<GameObject>();
+    [SerializeField] private Animator[] applicationAnimatorArray = new Animator[2];
 
     [Header("ÀÇ·Ú È­¸é")]
     [SerializeField] private GameObject requestScreen;
@@ -32,7 +39,22 @@ public class TabletScreen : MonoBehaviour
     [SerializeField] private List<GameObject> progressGameObjectList = new List<GameObject>();
     [SerializeField] private List<Step> progressList = new List<Step>();
 
-    public void OpenApplication(GameObject applicationScreen) => applicationScreen.SetActive(true);
+    [Header("°á°ú ÆË¾÷")]
+    [SerializeField] private TextMeshProUGUI[] resultText = new TextMeshProUGUI[6];
+
+    [SerializeField] private int pocket;
+    [SerializeField] private int profit;
+    [SerializeField] private int maintenanceCost;
+    [SerializeField] private int bought;
+    [SerializeField] private int tips;
+    [SerializeField] private int total;
+
+    public void OpenApplication(GameObject applicationScreen)
+    {
+        applicationAnimatorArray[applicationScreenArray.IndexOf(applicationScreen)].SetTrigger("Active");
+        StartCoroutine(ActiveGameObject(applicationScreen, 0.5f));
+    }
+
     public void CloseApplication()
     {
         CloseRequestContents();
@@ -42,11 +64,29 @@ public class TabletScreen : MonoBehaviour
             app.SetActive(false);
     }
 
+    public void OpenTablet()
+    {
+        CloseApplication();
+        tablet.SetActive(true);
+        tabletAnimator.SetTrigger("Open");
+    }
+
     public void CloseTablet()
     {
         CloseApplication();
+        tabletAnimator.SetTrigger("Close");
 
+        Invoke("OffTablet", 1f);
+    }
+
+    private void OffTablet()
+    {
         tablet.SetActive(false);
+    }
+
+    public void HomeButton()
+    {
+        CloseApplication();
     }
 
     #region ÀÇ·ÚÈ­¸é
@@ -149,24 +189,41 @@ public class TabletScreen : MonoBehaviour
 
     private void NextStep(int i)
     {
-        progressList[currentStep].clearRoundImage.gameObject.SetActive(true);
-        if(currentStep != 0)
+        if (currentStep != progressList.Count)
         {
             progressList[currentStep].clearLineImage.gameObject.SetActive(true);
-            StartCoroutine(FillImage(progressList[currentStep].clearLineImage));
+            StartCoroutine(FillImage(progressList[currentStep]));
+            currentStep++;
         }
-        currentStep++;
-        progressGameObjectList[currentStep].SetActive(true);
     }
 
-    private IEnumerator FillImage(Image fillImage)
+    private IEnumerator ActiveGameObject(GameObject target, Animator animator, string trigger, float time)
+    {
+        yield return new WaitForSeconds(time);
+        target.SetActive(true);
+        animator.SetTrigger(trigger);
+    }
+
+    private IEnumerator ActiveGameObject(GameObject target, float time)
+    {
+        yield return new WaitForSeconds(time);
+        target.SetActive(true);
+    }
+
+    private IEnumerator FillImage(Step step)
     {
         yield return new WaitForSeconds(0.001f);
 
-        if (fillImage.fillAmount != 1)
+        if (step.clearLineImage.fillAmount != 1)
         {
-            fillImage.fillAmount += 0.01f;
-            StartCoroutine(FillImage(fillImage));
+            step.clearLineImage.fillAmount += 0.01f;
+            StartCoroutine(FillImage(step));
+        }
+        else
+        {
+            StartCoroutine(ActiveGameObject(step.clearRoundImage.gameObject, step.anime, "Clear", 0.3f));
+            if (currentStep != 0 && currentStep != progressList.Count)
+                StartCoroutine(ActiveGameObject(progressGameObjectList[currentStep], 0.4f));
         }
     }
 
@@ -181,10 +238,44 @@ public class TabletScreen : MonoBehaviour
 
     private void Update()
     {
+        //CanvasPosition();
+
         if (Input.GetKeyDown(KeyCode.A))
             SetProgressGuide(requestList[0]);
         if (Input.GetKeyDown(KeyCode.S))
             NextStep(currentStep);
+        if (Input.GetKeyDown(KeyCode.D))
+            OpenTablet();
+        if (Input.GetKeyDown(KeyCode.F))
+            CloseTablet();
+    }
+    #endregion
+    #region °á°úÃ¢
+    private IEnumerator ScoreCalculate(int targetIndex)
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (int.Parse(resultText[targetIndex].text) != 0)
+        {
+            resultText[targetIndex].text = (int.Parse(resultText[targetIndex].text) - 1).ToString();
+            resultText[resultText.Length - 1].text = (int.Parse(resultText[resultText.Length - 1].text) + 1).ToString();
+            StartCoroutine(ScoreCalculate(targetIndex));
+        }
+        else if (int.Parse(resultText[targetIndex].text) != 0 && targetIndex != resultText.Length - 1)
+            StartCoroutine(ScoreCalculate(targetIndex + 1));
+    }
+
+    private IEnumerator OpenResultPopup()
+    {
+        float delay = 0;
+        foreach (var text in resultText)
+        {
+            StartCoroutine(ActiveGameObject(text.gameObject, delay));
+            delay += 0.5f;
+        }
+
+        yield return new WaitForSeconds(delay + 1f);
+
+        StartCoroutine(ScoreCalculate(0));
     }
     #endregion
 }
