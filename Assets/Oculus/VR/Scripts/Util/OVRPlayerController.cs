@@ -27,6 +27,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class OVRPlayerController : MonoBehaviour
 {
+    public GameObject uiCanvas;
     /// <summary>
     /// The rate acceleration during movement.
     /// </summary>
@@ -414,6 +415,7 @@ public class OVRPlayerController : MonoBehaviour
             {
                 primaryAxis.y = Mathf.Round(primaryAxis.y * FixedSpeedSteps) / FixedSpeedSteps;
                 primaryAxis.x = Mathf.Round(primaryAxis.x * FixedSpeedSteps) / FixedSpeedSteps;
+                CanvasPosition();
             }
 
             if (primaryAxis.y > 0.0f)
@@ -507,11 +509,18 @@ public class OVRPlayerController : MonoBehaviour
             else
             {
                 transform.RotateAround(CameraRig.centerEyeAnchor.position, Vector3.up, euler.y);
+                uiCanvas.transform.position = transform.position + canvasPosition;
+                uiCanvas.transform.RotateAround(CameraRig.centerEyeAnchor.position, Vector3.up, euler.y);
             }
         }
 #endif
     }
+    public Vector3 canvasPosition;
 
+    public void CanvasPosition()
+    {
+        uiCanvas.transform.position = transform.position + canvasPosition;
+    }
 
     /// <summary>
     /// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
